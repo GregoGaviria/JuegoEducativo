@@ -32,3 +32,5 @@ def worldGameLoop():
                     pass
                 case pygame.K_q:
                     gamestate.gameloop = "menu"
+        if event.type == pygame.constants.QUIT:
+            gamestate.exitflag = True

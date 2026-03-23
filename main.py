@@ -14,8 +14,7 @@ pygame.display.set_caption("juego")
 
 globVariables.DISPLAYSURF
 posX, posY = 0, 0
-ExitFlag = False
-while ExitFlag == False:
+while gamestate.exitflag == False:
 
     match gamestate.gameloop:
         case "menu":
@@ -25,8 +24,5 @@ while ExitFlag == False:
 
     pygame.display.update()
     FPS.tick(60)
-    for event in pygame.event.get():
-        if event.type == pygame.constants.QUIT:
-            ExitFlag = True
 
 pygame.quit()

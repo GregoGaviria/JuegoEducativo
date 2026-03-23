@@ -3,3 +3,5 @@ def init():
     posX, posY = 0, 0
     global gameloop
     gameloop = "menu"
+    global exitflag
+    exitflag = False

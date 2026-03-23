@@ -53,3 +53,5 @@ def menuWorldLoop():
                     gamestate.gameloop = "world"
                 case pygame.K_d:
                     pass
+        if event.type == pygame.constants.QUIT:
+            gamestate.exitflag = True
