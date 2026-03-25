@@ -44,7 +44,7 @@ def drawButtons():
     )
 
 
-def menuWorldLoop():
+def menuGameLoop():
     drawButtons()
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:

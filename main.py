@@ -18,7 +18,7 @@ while gamestate.exitflag == False:
 
     match gamestate.gameloop:
         case "menu":
-            menu.menuWorldLoop()
+            menu.menuGameLoop()
         case "world":
             world.worldGameLoop()
 
