@@ -9,11 +9,12 @@ import pygame.locals
 def worldGameLoop():
     globVariables.DISPLAYSURF.fill((255, 255, 255))
 
-    pygame.draw.rect(
-        globVariables.DISPLAYSURF,
-        (240, 20, 80),
-        pygame.Rect(gamestate.posX, gamestate.posY, 60, 60)
-    )
+    # pygame.draw.rect(
+    #     globVariables.DISPLAYSURF,
+    #     (240, 20, 80),
+    #     pygame.Rect(gamestate.posX, gamestate.posY, 64, 64)
+    # )
+    gamestate.player.worldObject.draw()
 
     # pygame.draw.rect(
     #     globVariables.DISPLAYSURF,
@@ -26,13 +27,13 @@ def worldGameLoop():
 
     pressedKeys = pygame.key.get_pressed()
     if pressedKeys[pygame.K_s]:
-        gamestate.posY = gamestate.posY+3
+        gamestate.player.worldObject.rect.move_ip(0, 3)
     if pressedKeys[pygame.K_w]:
-        gamestate.posY = gamestate.posY-3
+        gamestate.player.worldObject.rect.move_ip(0, -3)
     if pressedKeys[pygame.K_a]:
-        gamestate.posX = gamestate.posX-3
+        gamestate.player.worldObject.rect.move_ip(-3, 0)
     if pressedKeys[pygame.K_d]:
-        gamestate.posX = gamestate.posX+3
+        gamestate.player.worldObject.rect.move_ip(3, 0)
 
     # event loop:
     for event in pygame.event.get():
@@ -40,8 +41,8 @@ def worldGameLoop():
         if event.type == pygame.KEYDOWN:
             match event.key:
                 case pygame.K_i:
-                    # if dentro de rango de libro
-                    pass
+                    if libro.playerwithinrange():
+                        gamestate.gameloop = "menu"
                 case pygame.K_q:
                     gamestate.gameloop = "menu"
         if event.type == pygame.constants.QUIT:
