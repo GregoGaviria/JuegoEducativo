@@ -4,10 +4,16 @@ import world
 import menu
 import pygame.locals
 import globVariables
+import menuEntries
 pygame.init()
 pygame.font.init()
-gamestate.init()
 globVariables.init()
+menuEntries.init()
+gamestate.init()
+print("init complete")
+menuEntries.loadMainMenu()
+print("init complete")
+
 FPS = pygame.time.Clock()
 
 pygame.display.set_caption("juego")

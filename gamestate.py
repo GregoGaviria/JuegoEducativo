@@ -1,3 +1,4 @@
+import menuEntries
 import worldObjects
 
 
@@ -8,3 +9,5 @@ def init():
     exitflag = False
     global player
     player = worldObjects.Player()
+    global currentMenu
+    currentMenu = menuEntries.mainMenu
