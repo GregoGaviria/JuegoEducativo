@@ -14,33 +14,11 @@ def getButtonHeight():
 
 # TODO: corregir esto y crear un sistema para poder renerizar x cantidad de botones
 def getButtonX(buttonCount):
-    return 400
+    return ((config.WIN_WIDTH/4)*buttonCount)+config.BUTTON_MARGINS
 
 
-def getButtonWidth(buttonCount):
-    return 200
-
-
-# def drawButtons():
-#     pygame.draw.rect(
-#         globVariables.DISPLAYSURF,
-#         (0, 0, 0),
-#         pygame.Rect(
-#             getButtonX(3),
-#             getButtonY(),
-#             getButtonWidth(3),
-#             getButtonHeight()
-#         )
-#     )
-#     textSurface = globVariables.font.render(
-#         "presione a para comenzar",
-#         False,
-#         (255, 255, 255)
-#     )
-#     globVariables.DISPLAYSURF.blit(
-#         textSurface,
-#         (getButtonX(3)+config.BUTTON_MARGINS, getButtonY())
-#     )
+def getButtonWidth():
+    return (config.WIN_WIDTH/4)-(config.BUTTON_MARGINS*2)
 
 
 class Button():
@@ -49,9 +27,9 @@ class Button():
         self.texto = texto
         self.color = color
         self.baseRec = pygame.Rect(
-            getButtonX(3),
+            getButtonX(pos),
             getButtonY(),
-            getButtonWidth(3),
+            getButtonWidth(),
             getButtonHeight()
         )
         self.textSurface = globVariables.font.render(
@@ -68,7 +46,8 @@ class Button():
         )
         globVariables.DISPLAYSURF.blit(
             self.textSurface,
-            (getButtonX(3)+config.BUTTON_MARGINS, getButtonY())
+            (self.baseRec.x+config.BUTTON_MARGINS,
+             self.baseRec.y+config.BUTTON_MARGINS)
         )
 
 
