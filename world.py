@@ -1,3 +1,4 @@
+import menuEntries
 import config
 import pygame
 import gamestate
@@ -42,8 +43,11 @@ def worldGameLoop():
             match event.key:
                 case pygame.K_i:
                     if libro.playerwithinrange():
+                        menuEntries.loadBookMenu()
+                        # gamestate.currentMenu = menuEntries.bookMenu
                         gamestate.gameloop = "menu"
                 case pygame.K_q:
+                    menuEntries.loadMainMenu()
                     gamestate.gameloop = "menu"
         if event.type == pygame.constants.QUIT:
             gamestate.exitflag = True

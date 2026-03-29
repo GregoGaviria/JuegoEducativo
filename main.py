@@ -10,9 +10,7 @@ pygame.font.init()
 globVariables.init()
 menuEntries.init()
 gamestate.init()
-print("init complete")
 menuEntries.loadMainMenu()
-print("init complete")
 
 FPS = pygame.time.Clock()
 

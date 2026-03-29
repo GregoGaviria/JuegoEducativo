@@ -63,6 +63,7 @@ def mainMenu():
 
 
 def loadMainMenu():
+    gamestate.currentMenu = mainMenu
     buttons.clear()
 
     def button0func():
@@ -111,4 +112,54 @@ def loadMainMenu():
 
 
 def bookMenu():
-    pass
+    globVariables.DISPLAYSURF.blit(gamestate.document.background, (0, 0))
+    gamestate.document.render()
+
+
+def loadBookMenu():
+    gamestate.currentMenu = bookMenu
+    buttons.clear()
+
+    def button0func():
+        gamestate.document.prevPage()
+    button0 = Button(
+        button0func,
+        "pagina anterior",
+        (255, 255, 255),
+        (0, 0, 0),
+        0
+    )
+    buttons.append(button0)
+
+    def button1func():
+        pass
+    button1 = Button(
+        button1func,
+        "",
+        (255, 255, 255),
+        (0, 0, 0),
+        1
+    )
+    buttons.append(button1)
+
+    def button2func():
+        gamestate.document.nextPage()
+    button2 = Button(
+        button2func,
+        "proxima pagina",
+        (255, 255, 255),
+        (0, 0, 0),
+        2
+    )
+    buttons.append(button2)
+
+    def button3func():
+        gamestate.gameloop="world"
+    button3 = Button(
+        button3func,
+        "Salir",
+        (255, 255, 255),
+        (0, 0, 0),
+        3
+    )
+    buttons.append(button3)
