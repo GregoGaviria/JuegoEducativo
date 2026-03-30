@@ -48,3 +48,27 @@ class Document():
         if self.currentPage > 0:
             self.currentPage -= 1
         self.loadPages()
+
+
+def getLibro():
+    return Document(
+        [
+            [
+                "la primera linea de texto, primera pagina",
+                "la segunda linea de texto, primera pagina",
+                "la tercera linea de texto, primera pagina",
+            ],
+            [
+                "la primera linea de texto, segunda pagina",
+                "la segunda linea de texto, segunda pagina",
+                "la tercera linea de texto, segunda pagina",
+            ],
+            [
+                "la primera linea de texto, tercera pagina",
+                "la segunda linea de texto, tercera pagina",
+                "la tercera linea de texto, tercera pagina",
+            ],
+        ],
+        (255, 0, 0),
+        "assets/background-placeholder.jpg"
+    )

@@ -1,30 +1,24 @@
 import menuEntries
-import config
+# import config
 import pygame
 import gamestate
 import globVariables
-import worldObjects
+# import worldObjects
 import pygame.locals
 
 
 def worldGameLoop():
     globVariables.DISPLAYSURF.fill((255, 255, 255))
 
-    # pygame.draw.rect(
-    #     globVariables.DISPLAYSURF,
-    #     (240, 20, 80),
-    #     pygame.Rect(gamestate.posX, gamestate.posY, 64, 64)
-    # )
-    gamestate.player.worldObject.draw()
+    gamestate.player.draw()
 
-    # pygame.draw.rect(
-    #     globVariables.DISPLAYSURF,
-    #     (0, 0, 0),
-    #     pygame.Rect(config.WIN_WIDTH/2-30, config.WIN_HEIGHT/2-30, 60, 60)
+    # libro = worldObjects.WorldObject(
+    #     config.WIN_WIDTH/2-30, config.WIN_HEIGHT/2-30, "assets/placeholder-libro.jpg"
     # )
-    libro = worldObjects.WorldObject(
-        config.WIN_WIDTH/2-30, config.WIN_HEIGHT/2-30, "assets/placeholder-libro.jpg")
-    libro.draw()
+    # libro.draw()
+
+    for i in gamestate.worldObjectList:
+        i.draw()
 
     pressedKeys = pygame.key.get_pressed()
     if pressedKeys[pygame.K_s]:
@@ -42,10 +36,12 @@ def worldGameLoop():
         if event.type == pygame.KEYDOWN:
             match event.key:
                 case pygame.K_i:
-                    if libro.playerwithinrange():
-                        menuEntries.loadBookMenu()
-                        # gamestate.currentMenu = menuEntries.bookMenu
-                        gamestate.gameloop = "menu"
+                    # if gamestate.worldObjectList[0].playerwithinrange():
+                    #     print("bastos")
+                    #     menuEntries.loadBookMenu()
+                    #     gamestate.gameloop = "menu"
+                    for i in  gamestate.worldObjectList:
+                        i.playerwithinrange()
                 case pygame.K_q:
                     menuEntries.loadMainMenu()
                     gamestate.gameloop = "menu"
