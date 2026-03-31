@@ -1,4 +1,3 @@
-import menuEntries
 import documentPages
 import worldObjects
 
@@ -10,11 +9,13 @@ def init():
     exitflag = False
     global player
     player = worldObjects.Player()
-    global currentMenu
-    currentMenu = menuEntries.mainMenu
+    global menuRenderLoop
+    # currentMenu = menuEntries.mainMenu
     global document
     document = documentPages.getLibro()
     global worldObjectList
     worldObjectList = []
+    global buttons
+    buttons = []
     worldObjectList.append(worldObjects.getLibro())
     worldObjectList.append(worldObjects.getEnemy())

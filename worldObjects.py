@@ -20,7 +20,6 @@ class WorldObject():
         globVariables.DISPLAYSURF.blit(self.sprite, self.rect)
 
     def playerwithinrange(self):
-        print("bastttos")
         xrange = False
         yrange = False
         if (
@@ -49,15 +48,21 @@ class Player():
 
 class Enemy():
     def __init__(self):
+        def iniciateBattle():
+            menuEntries.loadBattleMenu()
+            gamestate.gameloop = "menu"
         self.worldObject = WorldObject(
-            0,
-            0,
+            300,
+            300,
             "assets/placeholder-enemigo.png",
-            lambda: None
+            iniciateBattle
         )
 
     def draw(self):
         self.worldObject.draw()
+
+    def playerwithinrange(self):
+        self.worldObject.playerwithinrange()
 
 
 def getLibro():
@@ -73,8 +78,4 @@ def getLibro():
 
 
 def getEnemy():
-    return Enemy(
-        # config.WIN_WIDTH-300,
-        # config.WIN_HEIGHT-300,
-        # "assets/placeholder-enemigo.png"
-    )
+    return Enemy()

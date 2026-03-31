@@ -51,20 +51,16 @@ class Button():
         )
 
 
-def init():
-    global mainMenuBackground
-    mainMenuBackground = pygame.image.load("assets/background-placeholder.jpg")
-    global buttons
-    buttons = []
 
 
-def mainMenu():
-    globVariables.DISPLAYSURF.blit(mainMenuBackground, (0, 0))
 
 
 def loadMainMenu():
-    gamestate.currentMenu = mainMenu
-    buttons.clear()
+    mainMenuBackground = pygame.image.load("assets/background-placeholder.jpg")
+    def renderLoop():
+        globVariables.DISPLAYSURF.blit(mainMenuBackground, (0, 0))
+    gamestate.menuRenderLoop = renderLoop
+    gamestate.buttons.clear()
 
     def button0func():
         gamestate.gameloop = "world"
@@ -75,7 +71,7 @@ def loadMainMenu():
         (0, 0, 0),
         0
     )
-    buttons.append(button0)
+    gamestate.buttons.append(button0)
 
     def button1func():
         pass
@@ -86,7 +82,7 @@ def loadMainMenu():
         (0, 0, 0),
         1
     )
-    buttons.append(button1)
+    gamestate.buttons.append(button1)
 
     def button2func():
         pass
@@ -97,7 +93,7 @@ def loadMainMenu():
         (0, 0, 0),
         2
     )
-    buttons.append(button2)
+    gamestate.buttons.append(button2)
 
     def button3func():
         gamestate.exitflag = True
@@ -108,17 +104,17 @@ def loadMainMenu():
         (0, 0, 0),
         3
     )
-    buttons.append(button3)
+    gamestate.buttons.append(button3)
 
 
-def bookMenu():
-    globVariables.DISPLAYSURF.blit(gamestate.document.background, (0, 0))
-    gamestate.document.render()
 
 
 def loadBookMenu():
-    gamestate.currentMenu = bookMenu
-    buttons.clear()
+    def renderLoop():
+        globVariables.DISPLAYSURF.blit(gamestate.document.background, (0, 0))
+        gamestate.document.render()
+    gamestate.menuRenderLoop = renderLoop
+    gamestate.buttons.clear()
 
     def button0func():
         gamestate.document.prevPage()
@@ -129,7 +125,7 @@ def loadBookMenu():
         (0, 0, 0),
         0
     )
-    buttons.append(button0)
+    gamestate.buttons.append(button0)
 
     def button1func():
         pass
@@ -140,7 +136,7 @@ def loadBookMenu():
         (0, 0, 0),
         1
     )
-    buttons.append(button1)
+    gamestate.buttons.append(button1)
 
     def button2func():
         gamestate.document.nextPage()
@@ -151,7 +147,7 @@ def loadBookMenu():
         (0, 0, 0),
         2
     )
-    buttons.append(button2)
+    gamestate.buttons.append(button2)
 
     def button3func():
         gamestate.gameloop="world"
@@ -162,4 +158,64 @@ def loadBookMenu():
         (0, 0, 0),
         3
     )
-    buttons.append(button3)
+    gamestate.buttons.append(button3)
+
+def loadBattleMenu():
+    background = pygame.transform.scale(
+        pygame.image.load("assets/background-placeholder.jpg"),
+        (config.WIN_WIDTH,config.WIN_HEIGHT)
+    )
+    enemySprite = pygame.transform.scale(
+        pygame.image.load("assets/placeholder-enemigo.png"),
+        (400,400)
+    )
+    def renderLoop():
+        globVariables.DISPLAYSURF.blit(background, (0, 0))
+        globVariables.DISPLAYSURF.blit(enemySprite, (40, 40))
+    gamestate.menuRenderLoop = renderLoop
+    gamestate.buttons.clear()
+
+    def button0func():
+        pass
+    button0 = Button(
+        button0func,
+        "Movimiento 1",
+        (255, 255, 255),
+        (0, 0, 0),
+        0
+    )
+    gamestate.buttons.append(button0)
+
+    def button1func():
+        pass
+    button1 = Button(
+        button1func,
+        "Movimiento 2",
+        (255, 255, 255),
+        (0, 0, 0),
+        1
+    )
+    gamestate.buttons.append(button1)
+
+    def button2func():
+        pass
+    button2 = Button(
+        button2func,
+        "Movimiento 3",
+        (255, 255, 255),
+        (0, 0, 0),
+        2
+    )
+    gamestate.buttons.append(button2)
+
+    def button3func():
+        gamestate.gameloop="world"
+    button3 = Button(
+        button3func,
+        "Movimiento 4",
+        (255, 255, 255),
+        (0, 0, 0),
+        3
+    )
+    gamestate.buttons.append(button3)
+

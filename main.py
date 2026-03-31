@@ -8,7 +8,7 @@ import menuEntries
 pygame.init()
 pygame.font.init()
 globVariables.init()
-menuEntries.init()
+# menuEntries.init()
 gamestate.init()
 menuEntries.loadMainMenu()
 
