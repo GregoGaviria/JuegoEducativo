@@ -29,6 +29,10 @@ class CombatUnit():
         self.SPATK = baseSpatk
         self.SPDEF = baseSpdef
         self.SPEED = baseSpeed
+        self.WEAKNESSES = weaknesses
+        self.RESISTS = resists
+        self.IMMUNITIES = immunities
+        self.TYPES = types
 
         self.move0 = move0
         self.move1 = move1
@@ -146,6 +150,17 @@ class Move():
 
         damage = self.bp*(attackingStat/defendingStat)
         damage = damage*(random.randint(85, 100)/100)
+        if self.type in target.WEAKNESSES:
+            damage = damage * 2
+            battleLog.append('el movimiento es super effectivo!')
+        if self.type in target.RESISTS:
+            damage = damage / 2
+            battleLog.append('el movimiento no es muy efectivo')
+        if self.type in target.IMMUNITIES:
+            damage = damage / 2
+            battleLog.append('el movimiento no le afecta')
+        if self.type in user.TYPES:
+            damage = damage * 1.5
         if 100-config.CRIT_CHANCE < random.randint(0, 100):
             battleLog.append("golpe critico!")
             damage = damage*1.5
