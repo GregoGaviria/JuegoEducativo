@@ -175,8 +175,9 @@ def loadBattleMenu():
     gamestate.buttons.clear()
 
     def button0func():
-        print(gamestate.player.move0.use(enemy, gamestate.player))
-        print(enemy.hp)
+        print(gamestate.player.combat.move0.use(
+            enemy.combat, gamestate.player.combat))
+        print(enemy.combat.hp)
         print("bastos")
     button0 = Button(
         button0func,
@@ -188,8 +189,9 @@ def loadBattleMenu():
     gamestate.buttons.append(button0)
 
     def button1func():
-        print(gamestate.player.move1.use(enemy, gamestate.player))
-        print(enemy.hp)
+        print(gamestate.player.combat.move1.use(
+            enemy.combat, gamestate.player.combat))
+        print(enemy.combat.hp)
         print("bastos")
     button1 = Button(
         button1func,
@@ -201,8 +203,9 @@ def loadBattleMenu():
     gamestate.buttons.append(button1)
 
     def button2func():
-        print(gamestate.player.move2.use(enemy, gamestate.player))
-        print(enemy.hp)
+        print(gamestate.player.combat.move2.use(
+            enemy.combat, gamestate.player.combat))
+        print(enemy.combat.hp)
         print("bastos")
     button2 = Button(
         button2func,
