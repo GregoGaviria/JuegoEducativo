@@ -8,12 +8,12 @@ def getUnitTest():
         130,
         65,
         "unit",
-        lambda a, b, c: None,
+        lambda a, b, c: c,
         False
     )
 
 
-def reduceEvasion(target, user, battleLog):
+def __reduceEvasion(target, user, battleLog):
     target.evasion = target.evasion-1
     battleLog.append("se redujo la evasión")
     return battleLog
@@ -26,12 +26,12 @@ def getIntegrationTest():
         55,
         85,
         "integration",
-        reduceEvasion,
+        __reduceEvasion,
         False
     )
 
 
-def reduce2selfSpatk(target, user, battleLog):
+def __reduce2selfSpatk(target, user, battleLog):
     user.spatkBoost = user.spatkBoost-2
     battleLog.append("se redujo el ataque especial")
     return battleLog
@@ -44,6 +44,18 @@ def getSystemTest():
         190,
         85,
         "system",
-        reduce2selfSpatk,
+        __reduce2selfSpatk,
+        True
+    )
+
+
+def getCrash():
+    return combat.Move(
+        "crash",
+        "bota el sistema",
+        140,
+        100,
+        "irritating",
+        __reduce2selfSpatk,
         True
     )

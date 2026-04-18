@@ -1,3 +1,4 @@
+import combat
 import pygame
 import globVariables
 import gamestate
@@ -175,10 +176,11 @@ def loadBattleMenu():
     gamestate.buttons.clear()
 
     def button0func():
-        print(gamestate.player.combat.move0.use(
-            enemy.combat, gamestate.player.combat))
-        print(enemy.combat.hp)
-        print("bastos")
+        combat.initTurn(
+            gamestate.player.combat.move0,
+            gamestate.player.combat,
+            enemy.combat
+        )
     button0 = Button(
         button0func,
         "Movimiento 1",
@@ -189,10 +191,11 @@ def loadBattleMenu():
     gamestate.buttons.append(button0)
 
     def button1func():
-        print(gamestate.player.combat.move1.use(
-            enemy.combat, gamestate.player.combat))
-        print(enemy.combat.hp)
-        print("bastos")
+        combat.initTurn(
+            gamestate.player.combat.move1,
+            gamestate.player.combat,
+            enemy.combat
+        )
     button1 = Button(
         button1func,
         "Movimiento 2",
@@ -203,10 +206,11 @@ def loadBattleMenu():
     gamestate.buttons.append(button1)
 
     def button2func():
-        print(gamestate.player.combat.move2.use(
-            enemy.combat, gamestate.player.combat))
-        print(enemy.combat.hp)
-        print("bastos")
+        combat.initTurn(
+            gamestate.player.combat.move2,
+            gamestate.player.combat,
+            enemy.combat
+        )
     button2 = Button(
         button2func,
         "Movimiento 3",

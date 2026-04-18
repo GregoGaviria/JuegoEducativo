@@ -6,6 +6,7 @@ import math
 class CombatUnit():
     def __init__(
         self,
+        name,
         baseHP,
         baseAttack,
         baseDefense,
@@ -16,8 +17,11 @@ class CombatUnit():
         move1,
         move2,
         weaknesses,
+        resists,
+        immunities,
         types
     ):
+        self.name = name
         self.MAXHP = baseHP
         self.hp = self.MAXHP
         self.ATTACK = baseAttack
@@ -37,6 +41,58 @@ class CombatUnit():
         self.speedBoost = 0
         self.evasion = 0
         self.accuracy = 0
+
+
+def initTurn(selectedMove, playerComb, enemyComb):
+    enemyMove = random.choice(
+        [
+            enemyComb.move0,
+            enemyComb.move1,
+            enemyComb.move2
+        ]
+    )
+    firstMove = None
+    secondMove = None
+    secondUser = None
+    firstUser = None
+    if playerComb.SPEED > enemyComb.SPEED:
+        firstMove = selectedMove
+        firstUser = playerComb
+        secondMove = enemyMove
+        secondUser = enemyComb
+    elif playerComb.SPEED < enemyComb.SPEED:
+        firstMove = enemyMove
+        firstUser = enemyComb
+        secondMove = selectedMove
+        secondUser = playerComb
+    elif random.randint(0, 1) == 1:
+        firstMove = selectedMove
+        firstUser = playerComb
+        secondMove = enemyMove
+        secondUser = enemyComb
+    else:
+        firstMove = enemyMove
+        secondUser = playerComb
+        secondMove = selectedMove
+        firstUser = enemyComb
+    battleLog = []
+    battleLog.append(
+        firstUser.name +
+        " utiliza movimiento " +
+        firstMove.name
+    )
+    battleLog = battleLog + firstMove.use(secondUser, firstUser)
+    battleLog.append(
+        secondUser.name +
+        " utiliza movimiento " +
+        firstMove.name
+    )
+    battleLog = battleLog + secondMove.use(firstUser, secondUser)
+    print(battleLog)
+    print(enemyComb.hp)
+    print(playerComb.hp)
+    print("TURN OVER")
+    return battleLog
 
 
 class Move():

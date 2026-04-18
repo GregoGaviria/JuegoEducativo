@@ -51,7 +51,8 @@ class Player():
         )
 
         self.combat = combat.CombatUnit(
-            baseHP=100,
+            name="el jugador",
+            baseHP=500,
             baseAttack=100,
             baseDefense=100,
             baseSpatk=100,
@@ -61,6 +62,8 @@ class Player():
             move1=movelist.getIntegrationTest(),
             move2=movelist.getSystemTest(),
             weaknesses=["irritating"],
+            resists=["evasive"],
+            immunities=[],
             types=["system"]
         )
 
@@ -81,26 +84,21 @@ class Enemy():
         )
 
         self.combat = combat.CombatUnit(
+            name="crasheador",
             baseHP=500,
             baseAttack=115,
             baseDefense=70,
             baseSpatk=110,
             baseSpdef=65,
-            baseSpeed=6,
-            move0=movelist.getUnitTest(),
-            move1=movelist.getIntegrationTest(),
-            move2=movelist.getSystemTest(),
+            baseSpeed=65,
+            move0=movelist.getCrash(),
+            move1=movelist.getCrash(),
+            move2=movelist.getCrash(),
             weaknesses=["system"],
+            resists=["unit"],
+            immunities=[],
             types=["irritating"]
         )
-
-        self.attackBoost = 0
-        self.defenseBoost = 0
-        self.spatkBoost = 0
-        self.spdefBoost = 0
-        self.speedBoost = 0
-        self.evasion = 0
-        self.accuracy = 0
 
     def draw(self):
         self.worldObject.draw()
