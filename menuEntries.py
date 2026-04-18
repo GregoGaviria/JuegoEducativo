@@ -2,6 +2,7 @@ import pygame
 import globVariables
 import gamestate
 import config
+import worldObjects
 
 
 def getButtonY():
@@ -51,12 +52,9 @@ class Button():
         )
 
 
-
-
-
-
 def loadMainMenu():
     mainMenuBackground = pygame.image.load("assets/background-placeholder.jpg")
+
     def renderLoop():
         globVariables.DISPLAYSURF.blit(mainMenuBackground, (0, 0))
     gamestate.menuRenderLoop = renderLoop
@@ -107,8 +105,6 @@ def loadMainMenu():
     gamestate.buttons.append(button3)
 
 
-
-
 def loadBookMenu():
     def renderLoop():
         globVariables.DISPLAYSURF.blit(gamestate.document.background, (0, 0))
@@ -150,7 +146,7 @@ def loadBookMenu():
     gamestate.buttons.append(button2)
 
     def button3func():
-        gamestate.gameloop="world"
+        gamestate.gameloop = "world"
     button3 = Button(
         button3func,
         "Salir",
@@ -160,15 +156,18 @@ def loadBookMenu():
     )
     gamestate.buttons.append(button3)
 
+
 def loadBattleMenu():
     background = pygame.transform.scale(
         pygame.image.load("assets/background-placeholder.jpg"),
-        (config.WIN_WIDTH,config.WIN_HEIGHT)
+        (config.WIN_WIDTH, config.WIN_HEIGHT)
     )
     enemySprite = pygame.transform.scale(
         pygame.image.load("assets/placeholder-enemigo.png"),
-        (400,400)
+        (400, 400)
     )
+    enemy = worldObjects.getEnemy()
+
     def renderLoop():
         globVariables.DISPLAYSURF.blit(background, (0, 0))
         globVariables.DISPLAYSURF.blit(enemySprite, (40, 40))
@@ -176,7 +175,9 @@ def loadBattleMenu():
     gamestate.buttons.clear()
 
     def button0func():
-        pass
+        print(gamestate.player.move0.use(enemy, gamestate.player))
+        print(enemy.hp)
+        print("bastos")
     button0 = Button(
         button0func,
         "Movimiento 1",
@@ -187,7 +188,9 @@ def loadBattleMenu():
     gamestate.buttons.append(button0)
 
     def button1func():
-        pass
+        print(gamestate.player.move1.use(enemy, gamestate.player))
+        print(enemy.hp)
+        print("bastos")
     button1 = Button(
         button1func,
         "Movimiento 2",
@@ -198,7 +201,9 @@ def loadBattleMenu():
     gamestate.buttons.append(button1)
 
     def button2func():
-        pass
+        print(gamestate.player.move2.use(enemy, gamestate.player))
+        print(enemy.hp)
+        print("bastos")
     button2 = Button(
         button2func,
         "Movimiento 3",
@@ -209,7 +214,8 @@ def loadBattleMenu():
     gamestate.buttons.append(button2)
 
     def button3func():
-        gamestate.gameloop="world"
+        # gamestate.player.move0()
+        gamestate.gameloop = "world"
     button3 = Button(
         button3func,
         "Movimiento 4",
@@ -218,4 +224,3 @@ def loadBattleMenu():
         3
     )
     gamestate.buttons.append(button3)
-
