@@ -158,16 +158,13 @@ def loadBookMenu():
     gamestate.buttons.append(button3)
 
 
-def loadBattleMenu():
+def loadBattleMenu(enemy):
+    gamestate.currentBattle = combat.Battle(enemy)
     background = pygame.transform.scale(
         pygame.image.load("assets/background-placeholder.jpg"),
         (config.WIN_WIDTH, config.WIN_HEIGHT)
     )
-    enemySprite = pygame.transform.scale(
-        pygame.image.load("assets/placeholder-enemigo.png"),
-        (400, 400)
-    )
-    enemy = worldObjects.getEnemy()
+    enemySprite = enemy.getCombatSprite()
 
     def renderLoop():
         globVariables.DISPLAYSURF.blit(background, (0, 0))

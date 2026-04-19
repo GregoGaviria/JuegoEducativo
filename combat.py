@@ -1,7 +1,11 @@
 import random
 import config
 import math
+import worldObjects
 
+class Battle():
+    def __init__(self, enemy):
+        self.enemy = enemy
 
 class CombatUnit():
     def __init__(

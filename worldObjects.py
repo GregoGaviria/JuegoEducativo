@@ -72,32 +72,24 @@ class Player():
 
 
 class Enemy():
-    def __init__(self):
+    def __init__(self, sprite, combatUnit, x, y):
         def iniciateBattle():
-            menuEntries.loadBattleMenu()
+            menuEntries.loadBattleMenu(self)
             gamestate.gameloop = "menu"
+        self.sprite = sprite
         self.worldObject = WorldObject(
-            300,
-            300,
-            "assets/placeholder-enemigo.png",
+            x,
+            y,
+            sprite,
             iniciateBattle
         )
 
-        self.combat = combat.CombatUnit(
-            name="crasheador",
-            baseHP=500,
-            baseAttack=115,
-            baseDefense=70,
-            baseSpatk=110,
-            baseSpdef=65,
-            baseSpeed=65,
-            move0=movelist.getCrash(),
-            move1=movelist.getCrash(),
-            move2=movelist.getCrash(),
-            weaknesses=["system"],
-            resists=["unit"],
-            immunities=[],
-            types=["irritating"]
+        self.combat = combatUnit
+
+    def getCombatSprite(self):
+        return pygame.transform.scale(
+            pygame.image.load(self.sprite),
+            (400, 400)
         )
 
     def draw(self):
@@ -119,5 +111,49 @@ def getLibro():
     )
 
 
-def getEnemy():
-    return Enemy()
+def getEnemy(enemy):
+    match enemy:
+        case "crasheador":
+            return Enemy(
+                sprite="assets/placeholder-enemigo.png",
+                combatUnit=combat.CombatUnit(
+                    name="crasheador",
+                    baseHP=500,
+                    baseAttack=115,
+                    baseDefense=70,
+                    baseSpatk=110,
+                    baseSpdef=65,
+                    baseSpeed=65,
+                    move0=movelist.getCrash(),
+                    move1=movelist.getCrash(),
+                    move2=movelist.getCrash(),
+                    weaknesses=["system"],
+                    resists=["unit"],
+                    immunities=[],
+                    types=["irritating"]
+                ),
+                x=400,
+                y=400
+            )
+        case "conexion":
+            return Enemy(
+                sprite="assets/placeholder-enemigo2.png",
+                combatUnit=combat.CombatUnit(
+                    name="conexion",
+                    baseHP=500,
+                    baseAttack=85,
+                    baseDefense=110,
+                    baseSpatk=55,
+                    baseSpdef=110,
+                    baseSpeed=115,
+                    move0=movelist.getCrash(),
+                    move1=movelist.getCrash(),
+                    move2=movelist.getCrash(),
+                    weaknesses=["integration"],
+                    resists=[],
+                    immunities=["unit"],
+                    types=["network"]
+                ),
+                x=800,
+                y=400
+            )
