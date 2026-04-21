@@ -3,9 +3,11 @@ import config
 import math
 import worldObjects
 
+
 class Battle():
     def __init__(self, enemy):
         self.enemy = enemy
+
 
 class CombatUnit():
     def __init__(
@@ -84,22 +86,41 @@ def initTurn(selectedMove, playerComb, enemyComb):
         secondMove = selectedMove
         firstUser = enemyComb
     battleLog = []
+
+    victoryFlag = False
+    lossFlag = False
+
+    # def checkKo():
+    #     if playerComb.hp <= 0:
+    #         lossFlag = True
+    #         battleLog.append("el jugador ha perdido!!")
+    #     if enemyComb.hp <= 0:
+    #         victoryFlag = True
+    #         battleLog.append("el enemigo ha sido derrotado!")
     battleLog.append(
         firstUser.name +
         " utiliza movimiento " +
         firstMove.name
     )
     battleLog = battleLog + firstMove.use(secondUser, firstUser)
-    battleLog.append(
-        secondUser.name +
-        " utiliza movimiento " +
-        firstMove.name
-    )
-    battleLog = battleLog + secondMove.use(firstUser, secondUser)
-    print(battleLog)
+    if secondUser.hp > 0:
+        battleLog.append(
+            secondUser.name +
+            " utiliza movimiento " +
+            firstMove.name
+        )
+        battleLog = battleLog + secondMove.use(firstUser, secondUser)
     print(enemyComb.hp)
     print(playerComb.hp)
+    if enemyComb.hp <= 0:
+        victoryFlag = True
+        battleLog.append("el enemigo ha sido derrotado!")
+    if playerComb.hp <= 0:
+        lossFlag = True
+        battleLog.append("el jugador ha perdido!!")
+    print(battleLog)
     print("TURN OVER")
+    # return {"log": battleLog, "vFlag": victoryFlag, "lFlag": lossFlag}
     return battleLog
 
 

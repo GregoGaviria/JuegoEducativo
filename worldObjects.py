@@ -1,4 +1,5 @@
 import menuEntries
+import random
 import movelist
 import combat
 import pygame
@@ -72,7 +73,7 @@ class Player():
 
 
 class Enemy():
-    def __init__(self, sprite, combatUnit, x, y):
+    def __init__(self, sprite, combatUnit, x, y, dialog):
         def iniciateBattle():
             menuEntries.loadBattleMenu(self)
             gamestate.gameloop = "menu"
@@ -85,6 +86,10 @@ class Enemy():
         )
 
         self.combat = combatUnit
+        self.dialog = dialog
+
+    def getRandomDialog(self):
+        random.choice(self.dialog)
 
     def getCombatSprite(self):
         return pygame.transform.scale(
@@ -133,7 +138,11 @@ def getEnemy(enemy):
                     types=["irritating"]
                 ),
                 x=400,
-                y=400
+                y=400,
+                dialog=[
+                    "el crasheador te muestra una pantalla azul",
+                    "el crasheador se tropieza"
+                ]
             )
         case "conexion":
             return Enemy(
@@ -155,5 +164,9 @@ def getEnemy(enemy):
                     types=["network"]
                 ),
                 x=800,
-                y=400
+                y=400,
+                dialog=[
+                    "el enemigo empieza a hablar muy lento",
+                    "el enemigo se cae"
+                ]
             )
