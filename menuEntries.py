@@ -617,6 +617,10 @@ def LoadLogMenu(enemy, log):
     gamestate.buttons.clear()
 
     def button0func():
+        if log[0] == "el enemigo ha sido derrotado!" and len(log) == 1:
+            gamestate.gameloop = "world"
+        elif log[0] == "el jugador ha perdido!!":
+            gamestate.exitflag = True
         if len(log) == 1:
             LoadTurnMenu(enemy)
         else:

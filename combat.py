@@ -113,10 +113,10 @@ def initTurn(selectedMove, playerComb, enemyComb):
     print(enemyComb.hp)
     print(playerComb.hp)
     if enemyComb.hp <= 0:
-        victoryFlag = True
+        # victoryFlag = True
         battleLog.append("el enemigo ha sido derrotado!")
     if playerComb.hp <= 0:
-        lossFlag = True
+        # lossFlag = True
         battleLog.append("el jugador ha perdido!!")
     print(battleLog)
     print("TURN OVER")
