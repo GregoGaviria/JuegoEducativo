@@ -284,7 +284,7 @@ def LoadTurnMenu(enemy):
     hpBarRedEnemy = pygame.Rect(
         153,
         513,
-        config.WIN_WIDTH-226*hpBarLengthCalc(gamestate.player.combat),
+        (config.WIN_WIDTH-226)*hpBarLengthCalc(enemy.combat),
         24
     )
     hpbarBlackEnemy = pygame.Rect(
@@ -314,7 +314,7 @@ def LoadTurnMenu(enemy):
     hpBarGreenPlayer = pygame.Rect(
         153,
         563,
-        config.WIN_WIDTH-226*hpBarLengthCalc(gamestate.player.combat),
+        (config.WIN_WIDTH-226)*hpBarLengthCalc(gamestate.player.combat),
         24
     )
     hpbarBlackPlayer = pygame.Rect(
@@ -504,7 +504,7 @@ def LoadLogMenu(enemy, log):
     hpBarRedEnemy = pygame.Rect(
         153,
         513,
-        config.WIN_WIDTH-226*hpBarLengthCalc(gamestate.player.combat),
+        (config.WIN_WIDTH-226)*hpBarLengthCalc(enemy.combat),
         24
     )
     hpbarBlackEnemy = pygame.Rect(
@@ -534,7 +534,7 @@ def LoadLogMenu(enemy, log):
     hpBarGreenPlayer = pygame.Rect(
         153,
         563,
-        config.WIN_WIDTH-226*hpBarLengthCalc(gamestate.player.combat),
+        (config.WIN_WIDTH-226)*hpBarLengthCalc(gamestate.player.combat),
         24
     )
     hpbarBlackPlayer = pygame.Rect(
