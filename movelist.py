@@ -75,7 +75,7 @@ def getBluescreen():
 
 
 def __reduceAccuracy(target, user, battleLog):
-    target.accuracy = target.accuracy+1
+    target.accuracy = target.accuracy-1
     battleLog.append("se redujo la precision de "+target.name)
     return battleLog
 
@@ -144,7 +144,7 @@ def __scrambleStats(target, user, battleLog):
     battleLog.append("se revuelven las estadisticas")
     kaisuu = random.randint(1, 2)
     for i in range(kaisuu):
-        tget = random.choice(target, user)
+        tget = random.choice([target, user])
         teido = random.randint(1, 2)
         match random.randint(1, 2):
             case 1:
@@ -222,6 +222,7 @@ def __scrambleStats(target, user, battleLog):
                         battleLog.append(
                             'se aumento la precision de '+tget.name
                         )
+    return battleLog
 
 
 def getRevolverDatos():

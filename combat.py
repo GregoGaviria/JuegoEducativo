@@ -51,6 +51,11 @@ class CombatUnit():
         self.speedBoost = 0
         self.evasion = 0
         self.accuracy = 0
+        # "iluminacion de ultima hora": solo el jugador la usa, solo
+        # durante la bossfight. una sola vez por combate, al bajar de
+        # 100 hp se cura full y queda inmune 2 golpes
+        self.enlightenmentUsed = False
+        self.immunityCharges = 0
 
 
 def initTurn(selectedMove, playerComb, enemyComb):
@@ -182,7 +187,7 @@ class Move():
             damage = damage / 2
             battleLog.append('el movimiento no es muy efectivo')
         if self.type in target.IMMUNITIES:
-            damage = damage / 2
+            damage = 0
             battleLog.append('el movimiento no le afecta')
         if self.type in user.TYPES:
             damage = damage * 1.5
@@ -191,7 +196,28 @@ class Move():
             damage = damage*1.5
 
         damage = math.ceil(damage)
-        target.hp = target.hp - damage
+
+        # inmunidad de iluminacion: absorbe el golpe completo y consume
+        # una de las cargas. reporta en el log para feedback + animacion
+        if getattr(target, "immunityCharges", 0) > 0 and damage > 0:
+            target.immunityCharges -= 1
+            battleLog.append("la iluminacion protege al jugador!")
+        else:
+            target.hp = target.hp - damage
+            # iluminacion de ultima hora: solo si el atacante es jefe y
+            # el objetivo es el jugador, y no se uso antes en este combate
+            if (
+                not getattr(target, "enlightenmentUsed", True)
+                and "boss" in user.TYPES
+                and target.hp < 100
+            ):
+                target.hp = target.MAXHP
+                target.enlightenmentUsed = True
+                target.immunityCharges = 2
+                battleLog.append("iluminacion de ultima hora!")
+                battleLog.append(
+                    "el jugador recupera toda su vida y es inmune 2 golpes"
+                )
 
         battleLog = self.effect(target, user, battleLog)
         return battleLog
