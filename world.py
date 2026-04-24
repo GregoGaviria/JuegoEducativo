@@ -9,6 +9,7 @@ import pygame.locals
 
 def worldGameLoop():
     globVariables.DISPLAYSURF.fill((255, 255, 255))
+    globVariables.DISPLAYSURF.blit(globVariables.worldBackground, (0, 0))
 
     gamestate.player.draw()
 
@@ -40,7 +41,7 @@ def worldGameLoop():
                     #     print("bastos")
                     #     menuEntries.loadBookMenu()
                     #     gamestate.gameloop = "menu"
-                    for i in  gamestate.worldObjectList:
+                    for i in gamestate.worldObjectList:
                         i.playerwithinrange()
                 case pygame.K_q:
                     menuEntries.loadMainMenu()
