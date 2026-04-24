@@ -67,7 +67,7 @@ def loadMainMenu():
         button0func,
         "Presione U para comenzar",
         (255, 255, 255),
-        (0, 0, 0),
+        (32, 32, 32),
         0
     )
     gamestate.buttons.append(button0)
@@ -100,7 +100,7 @@ def loadMainMenu():
         button3func,
         "Cerrar juego",
         (255, 255, 255),
-        (0, 0, 0),
+        (32, 32, 32),
         3
     )
     gamestate.buttons.append(button3)
@@ -119,7 +119,7 @@ def loadBookMenu():
         button0func,
         "pagina anterior",
         (255, 255, 255),
-        (0, 0, 0),
+        (32, 32, 32),
         0
     )
     gamestate.buttons.append(button0)
@@ -141,7 +141,7 @@ def loadBookMenu():
         button2func,
         "proxima pagina",
         (255, 255, 255),
-        (0, 0, 0),
+        (32, 32, 32),
         2
     )
     gamestate.buttons.append(button2)
@@ -152,7 +152,7 @@ def loadBookMenu():
         button3func,
         "Salir",
         (255, 255, 255),
-        (0, 0, 0),
+        (32, 32, 32),
         3
     )
     gamestate.buttons.append(button3)
@@ -205,9 +205,9 @@ def loadBattleMenu(enemy):
         LoadTurnMenu(enemy)
     button0 = Button(
         button0func,
-        "Movimiento 1",
+        "comenzar",
         (255, 255, 255),
-        (0, 0, 0),
+        (32, 32, 32),
         0
     )
     gamestate.buttons.append(button0)
@@ -240,7 +240,7 @@ def loadBattleMenu(enemy):
         button3func,
         "Salir",
         (255, 255, 255),
-        (0, 0, 0),
+        (32, 32, 32),
         3
     )
     gamestate.buttons.append(button3)
@@ -412,9 +412,9 @@ def LoadTurnMenu(enemy):
             ))
     button0 = Button(
         button0func,
-        "Movimiento 1",
+        gamestate.player.combat.move0.name,
         (255, 255, 255),
-        (0, 0, 0),
+        (128, 32, 32),
         0
     )
     gamestate.buttons.append(button0)
@@ -429,9 +429,9 @@ def LoadTurnMenu(enemy):
             ))
     button1 = Button(
         button1func,
-        "Movimiento 2",
+        gamestate.player.combat.move1.name,
         (255, 255, 255),
-        (0, 0, 0),
+        (32, 128, 32),
         1
     )
     gamestate.buttons.append(button1)
@@ -446,9 +446,9 @@ def LoadTurnMenu(enemy):
             ))
     button2 = Button(
         button2func,
-        "Movimiento 3",
+        gamestate.player.combat.move2.name,
         (255, 255, 255),
-        (0, 0, 0),
+        (32, 32, 128),
         2
     )
     gamestate.buttons.append(button2)
@@ -458,9 +458,9 @@ def LoadTurnMenu(enemy):
         gamestate.gameloop = "world"
     button3 = Button(
         button3func,
-        "Movimiento 4",
+        "salir",
         (255, 255, 255),
-        (0, 0, 0),
+        (32, 32, 32),
         3
     )
     gamestate.buttons.append(button3)
@@ -628,9 +628,9 @@ def LoadLogMenu(enemy, log):
 
     button0 = Button(
         button0func,
-        "Movimiento 1",
+        "siguiente",
         (255, 255, 255),
-        (0, 0, 0),
+        (32, 32, 32),
         0
     )
     gamestate.buttons.append(button0)
@@ -639,7 +639,7 @@ def LoadLogMenu(enemy, log):
         pass
     button1 = Button(
         button1func,
-        "Movimiento 2",
+        "",
         (255, 255, 255),
         (0, 0, 0),
         1
@@ -650,7 +650,7 @@ def LoadLogMenu(enemy, log):
         pass
     button2 = Button(
         button2func,
-        "Movimiento 3",
+        "",
         (255, 255, 255),
         (0, 0, 0),
         2
@@ -661,9 +661,9 @@ def LoadLogMenu(enemy, log):
         gamestate.gameloop = "world"
     button3 = Button(
         button3func,
-        "Movimiento 4",
+        "salir",
         (255, 255, 255),
-        (0, 0, 0),
+        (32, 32, 32),
         3
     )
     gamestate.buttons.append(button3)

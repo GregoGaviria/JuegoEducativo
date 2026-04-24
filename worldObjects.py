@@ -109,8 +109,10 @@ def getLibro():
         menuEntries.loadBookMenu()
         gamestate.gameloop = "menu"
     return WorldObject(
-        config.WIN_WIDTH/2-30,
-        config.WIN_HEIGHT/2 - 30,
+        # config.WIN_WIDTH/2-30,
+        # config.WIN_HEIGHT/2 - 30,
+        150,
+        150,
         "assets/placeholder-libro.jpg",
         libroInteractFunc
     )

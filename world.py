@@ -8,7 +8,7 @@ import pygame.locals
 
 
 def worldGameLoop():
-    globVariables.DISPLAYSURF.fill((255, 255, 255))
+    # globVariables.DISPLAYSURF.fill((255, 255, 255))
     globVariables.DISPLAYSURF.blit(globVariables.worldBackground, (0, 0))
 
     gamestate.player.draw()
