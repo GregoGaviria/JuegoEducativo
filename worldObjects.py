@@ -130,14 +130,14 @@ def getEnemy(enemy):
                     baseSpdef=65,
                     baseSpeed=65,
                     move0=movelist.getCrash(),
-                    move1=movelist.getCrash(),
-                    move2=movelist.getCrash(),
+                    move1=movelist.getBluescreen(),
+                    move2=movelist.getIrritar(),
                     weaknesses=["system"],
                     resists=["unit"],
                     immunities=[],
                     types=["irritating"]
                 ),
-                x=400,
+                x=200,
                 y=400,
                 dialog=[
                     "el crasheador te muestra una pantalla azul",
@@ -148,16 +148,16 @@ def getEnemy(enemy):
             return Enemy(
                 sprite="assets/placeholder-enemigo2.png",
                 combatUnit=combat.CombatUnit(
-                    name="conexion",
+                    name="Gwifi",
                     baseHP=500,
                     baseAttack=85,
-                    baseDefense=110,
-                    baseSpatk=55,
+                    baseDefense=140,
+                    baseSpatk=75,
                     baseSpdef=110,
-                    baseSpeed=115,
-                    move0=movelist.getCrash(),
-                    move1=movelist.getCrash(),
-                    move2=movelist.getCrash(),
+                    baseSpeed=65,
+                    move0=movelist.getOutage(),
+                    move1=movelist.getIntermitencia(),
+                    move2=movelist.getVelocidadBaja(),
                     weaknesses=["integration"],
                     resists=[],
                     immunities=["unit"],
@@ -168,5 +168,31 @@ def getEnemy(enemy):
                 dialog=[
                     "el enemigo empieza a hablar muy lento",
                     "el enemigo se cae"
+                ]
+            )
+        case "pulgita":
+            return Enemy(
+                sprite="assets/placeholder-enemigo3.png",
+                combatUnit=combat.CombatUnit(
+                    name="pulgita",
+                    baseHP=500,
+                    baseAttack=85,
+                    baseDefense=80,
+                    baseSpatk=75,
+                    baseSpdef=90,
+                    baseSpeed=115,
+                    move0=movelist.getRevolverDatos(),
+                    move1=movelist.getCrash(),
+                    move2=movelist.getRomperInterfazVisual(),
+                    weaknesses=["unit"],
+                    resists=[],
+                    immunities=[],
+                    types=["bug"]
+                ),
+                x=500,
+                y=200,
+                dialog=[
+                    "el enemigo empieza a moverse extrañamente",
+                    "el enemigo dice cosas que no tienen sentido"
                 ]
             )

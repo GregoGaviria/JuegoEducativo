@@ -22,3 +22,4 @@ def init():
     worldObjectList.append(worldObjects.getLibro())
     worldObjectList.append(worldObjects.getEnemy("crasheador"))
     worldObjectList.append(worldObjects.getEnemy("conexion"))
+    worldObjectList.append(worldObjects.getEnemy("pulgita"))

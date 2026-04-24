@@ -87,8 +87,8 @@ def initTurn(selectedMove, playerComb, enemyComb):
         firstUser = enemyComb
     battleLog = []
 
-    victoryFlag = False
-    lossFlag = False
+    # victoryFlag = False
+    # lossFlag = False
 
     # def checkKo():
     #     if playerComb.hp <= 0:
@@ -107,7 +107,7 @@ def initTurn(selectedMove, playerComb, enemyComb):
         battleLog.append(
             secondUser.name +
             " utiliza movimiento " +
-            firstMove.name
+            secondMove.name
         )
         battleLog = battleLog + secondMove.use(firstUser, secondUser)
     print(enemyComb.hp)
